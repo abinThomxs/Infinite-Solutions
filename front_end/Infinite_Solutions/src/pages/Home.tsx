@@ -1,4 +1,5 @@
-import HomeComp from '@/scenes/Home'
+import Landing from '@/scenes/Home/landing'
+import ServicesBox from '@/scenes/Home/services'
 import Navbar from '@/scenes/navbar'
 import React, { useEffect } from 'react'
 
@@ -11,7 +12,8 @@ const Home = (props: Props) => {
         <Navbar isTopOfPage={false} selectedPage={''} setSelectedPage={function (value: string): void {
               throw new Error('Function not implemented.')
           } } />
-        <HomeComp />
+        <Landing />
+        <ServicesBox/>
     </div>
   )
 }

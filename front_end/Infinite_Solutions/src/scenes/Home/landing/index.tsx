@@ -8,27 +8,19 @@ import CarouselBackground from '../Carousal/Carousal';
 useMediaQuery
 type Props = {}
 
-const HomeComp = (props: Props) => {
+const Landing = (props: Props) => {
     useEffect (() => {
         console.log('hsdb')
     }) 
   return (
     <section>
         
-        <div className=''>
-
-            
-            <p>
+        <div > 
             <CarouselBackground />
-                hdsbafbhsdbfbfhbdfsbdfasdhbf
-                jkdfksdksdf
-                jsdbfjksdbfkskdf
-                jsdnkfdjksnfkla
-            </p>
         </div>
         
     </section>
   )
 }
 
-export default HomeComp;
+export default Landing;
