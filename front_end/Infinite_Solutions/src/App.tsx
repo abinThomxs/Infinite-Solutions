@@ -1,5 +1,11 @@
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
 import Navbar from "@/scenes/navbar";
 import { useEffect, useState } from "react";
+import Home from "./pages/Home";
 
 
 function App() {
@@ -22,11 +28,12 @@ useEffect(() => {
 
   return (
     <div className="app">
-      <Navbar
-      isTopOfPage={isTopOfPage}
-      selectedPage={selectedPage}
-      setSelectedPage={setSelectedPage}
-      />
+       <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          
+        </Routes>
+      </Router>
     </div>
   )
 }

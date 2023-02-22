@@ -14,19 +14,19 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
   const flexBetween = "flex items-center justify-content-between"
   const [ isMenuToggled, setIsMenuToggled ] = useState<boolean>(false);
   const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
-  const navbarBackground = isTopOfPage ? '' : ' bg-white drop-shadow-xl'
+  const navbarBackground = isTopOfPage ? '' : '<bg-white drop-shadow-xl'
 
     return (
     <nav>
-        <div className={`${navbarBackground} ${flexBetween} fixed top-0 z-30 w-full h-8 py-10`}>
+        <div className={`${navbarBackground} ${flexBetween}  fixed top-0 z-20 w-full h-8 py-10`}>
             
         <div className={`${flexBetween}  mx-auto w-10/11`}>
             <div className={`${flexBetween} w-full gap-16`}>
-            <img src={Logo} alt="logo" className='h-40' />
+            <img src={Logo} alt="logo" className='h-60 tw-shadow-color: #fff' />
             
             {isAboveMediumScreens ? (
             <div className={`${flexBetween} w-full`}>
-                <div className={`${flexBetween} gap-8 text-sm`}>
+                <div className={`${flexBetween} gap-8 text-lg text-blue-500 font-bold `}>
                     <Link
                       page="Home"
                       selectedPage={selectedPage}
