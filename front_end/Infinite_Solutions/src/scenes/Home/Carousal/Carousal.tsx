@@ -26,19 +26,24 @@ const CarouselBackground = () => {
         <div className="h-screen bg-[url('/assets/pet_care.png')] bg-cover bg-center " />
         <div className="h-screen bg-[url('/assets/plumber.jpg')] bg-cover bg-center " />
       </Slider>
-      <div className="absolute top-0 left-0 h-full w-full bg-black opacity-80" />
-
+      <div className="absolute top-0 left-0 h-full w-full bg-black opacity-70" />
+      {/* <div className="static top-0 left-0 flex items-center justify-center h-full ">
+          <h2>Connecting you with trusted service professionals for all your home and lifestyle needs.</h2>
+        </div> */}
       <div className="absolute top-0 left-0 flex h-full w-full items-center justify-center gap-16">
-        
-        <div className="flex rounded border border-none gap-3">
+        <div className="absolute top-0 left-0 flex h-80 w-full items-center justify-center">
+          <div className="w-67">
+            <h1 className="text-white text-3xl text-center">Connecting you with trusted service professionals <br /> for all your home and lifestyle needs. </h1>
+            
+          </div>          
+        </div>
+        <div className="flex rounded border w-7/8 border-none gap-3">        
           <input
             type="text"
-            className="block w-full rounded-md border bg-white px-4 py-2 text-purple-700 focus:border-purple-400 focus:outline-none focus:ring focus:ring-purple-300 focus:ring-opacity-40"
+            className="block w-full rounded-md border bg-white px-16 py-4 text-purple-700 focus:border-purple-400 focus:outline-none focus:ring focus:ring-purple-300 focus:ring-opacity-40"
             placeholder="Search for a service"
           />
-          <button className="rounded border-l bg-blue-100 px-4 text-white ">
-            Search
-          </button>
+          
         </div>
       </div>
     </div>
