@@ -1,6 +1,8 @@
 import Banner from '@/scenes/Home/banner/Banner'
+import Frequent from '@/scenes/Home/frequent/Frequent'
 import Info from '@/scenes/Home/info/Info'
 import Landing from '@/scenes/Home/landing'
+import Reviews from '@/scenes/Home/reviews/Reviews'
 import ServicesBox from '@/scenes/Home/services'
 import Navbar from '@/scenes/navbar'
 import React, { useEffect, useState } from 'react'
@@ -37,6 +39,12 @@ const Home = (props: Props) => {
         </div>
         <div className='w-full  flex justify-center'>
           <Info/>
+        </div>
+        <div className='w-full  flex justify-center'>
+          <Frequent/>
+        </div>
+        <div className='w-full  flex justify-center'>
+          <Reviews/>
         </div>
     </div>
   )
