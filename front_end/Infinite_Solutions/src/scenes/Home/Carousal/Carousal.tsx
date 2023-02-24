@@ -44,8 +44,7 @@ const CarouselBackground = () => {
               placeholder="Search for a service"
             />
           </div>
-        </div>
-        <p>jkdfjksd</p>
+        </div>       
       </div>
     </div>
   );

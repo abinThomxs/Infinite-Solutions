@@ -7,13 +7,13 @@ const Info = (props: Props) => {
     <div className="m-16 flex justify-center">
       <div
         id="shad"
-        className="flex-column w-7/12 items-center justify-center  bg-white p-8 "
+        className="flex-column md:w-7/12  items-center justify-center  bg-white md:p-8 "
       >
-        <div className="flex justify-center items-center">
-          <div >
-            <h1 className="text-center text-5xl ">Why use Infinite Solutions?</h1>
-            <p>
-            ipsa quae ab illo inventore veritatis et quasi architecto beatae
+        <div className="md:flex md:justify-center items-center">
+          <div className="md:w-6/12 sm:w-full" >
+            <h1 className="text-center sm:text-xl md:text-5xl ">Why use Infinite Solutions?</h1>
+            <p className="lg:text-xl sm:text-sm">
+            ipsa quae ab illo inventore veritatis et quasi architecto beatae  
             vitae ipsa quae ab illo inventore veritatis et quasi architecto
             beatae vitae
           </p>

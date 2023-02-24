@@ -1,3 +1,4 @@
+import Footer from '@/scenes/footer/Footer'
 import Banner from '@/scenes/Home/banner/Banner'
 import Frequent from '@/scenes/Home/frequent/Frequent'
 import Info from '@/scenes/Home/info/Info'
@@ -46,6 +47,7 @@ const Home = (props: Props) => {
         <div className='w-full  flex justify-center'>
           <Reviews/>
         </div>
+        <Footer/>
     </div>
   )
 }

@@ -4,10 +4,10 @@ type Props = {};
 
 const Frequent = (props: Props) => {
   return (
-    <div className="w-full">
-      <h1 className="m-5 text-center text-3xl">Frequently Used Services</h1>
-      <div className="flex w-full justify-evenly">
-        <div className="shadow-2xl border-2 border-gray-200">
+    <div className="sm:w-full">
+      <h1 className="sm:ml-5 text-center md:text-3xl sm:text-lg">Frequently Used Services</h1>
+      <div className="sm:flex md:w-full md:justify-evenly sm:justify-center">
+        <div className="shadow-2xl border-2 border-gray-200 p-0">
           <div>
             <img className="w-60" src="./assets/gardening.png" alt="" />
           </div>
@@ -15,7 +15,7 @@ const Frequent = (props: Props) => {
             <h1 className="text-center text-2xl">Gardening</h1>
           </div>
           <div>
-            <p className="w-60 text-center">
+            <p className="w-60 text-center text-md">
               ipsa quae ab illo inventore veritatis et quasi architecto beatae
               vitae ipsa quae ab illo inventore veritatis et quasi architecto
               beatae vitae
