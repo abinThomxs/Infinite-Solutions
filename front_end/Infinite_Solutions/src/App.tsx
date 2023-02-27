@@ -4,13 +4,20 @@ import {
   Route
 } from "react-router-dom";
 import Navbar from "@/scenes/navbar";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Home from "./pages/Home";
+import { useSelector } from "react-redux";
+import { objectType } from "@material-tailwind/react/types/components/checkbox";
+import { login, logout } from "./redux/LoginShowSlice";
+import { useDispatch } from "react-redux";
 
 
 function App() {
   const [ selectedPage, setSelectedPage ] = useState("home");
   const [ isTopOfPage, setIsTopOfPage ] = useState<boolean>(true);
+  const showLogin = useSelector((state:objectType) => state.login.showLogin)
+  const dispatch = useDispatch()
+  
 
 useEffect(() => {
   const handleScroll = () => {

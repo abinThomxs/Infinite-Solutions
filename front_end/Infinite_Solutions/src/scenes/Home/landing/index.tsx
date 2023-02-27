@@ -1,5 +1,4 @@
 import useMediaQuery from '@/hooks/useMediaQuery'
-import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { useEffect } from 'react';
@@ -10,7 +9,6 @@ type Props = {}
 
 const Landing = (props: Props) => {
     useEffect (() => {
-        console.log('hsdb')
     }) 
   return (
     <section>
