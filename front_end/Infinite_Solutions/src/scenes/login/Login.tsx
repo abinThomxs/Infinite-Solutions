@@ -1,74 +1,150 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast, ToastContentProps } from "react-toastify";
+import axios from "axios";
 
-type Props = {}
+type Props = {};
 
 const Login = (props: Props) => {
-    const [showModal, setShowModal] = useState(true);
+  const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(true);
+  const [values, setValues] = useState({
+    email: "",
+    password: "",
+  });
+
+  const generateError = (err: string) =>
+    toast.error(err, {
+      position: "bottom-right",
+    });
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      const { data } = await axios.post("http://localhost:4000/login", {
+        ...values,
+      });
+
+      if (data) {
+        if (data.errors) {
+          const { email, password } = data.errors;
+          if (email) generateError(email);
+          else if (password) generateError(password);
+        } else {
+            alert("success");
+        }
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <>
-    {showModal ? (
-        <><div className="justify-center items-center flex overflow-x-hidden overflow-y-auto relative -inset-x-6 z-50 outline-none focus:outline-none">
-                  <div className="relative w-auto my-6 mx-auto max-w-3xl">
-                      {/*content*/}
-                      <div className="border-0 rounded-lg shadow-lg px-6 relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                          {/*header*/}
-                          <div className='flex'>
-                              <button
-                                  className="p-1 ml-auto  border-0 text-black  float-right text-xl leading-none font-semibold outline-none focus:outline-none"
-                                  onClick={() => setShowModal(false)}
-                              >
-                                  <i className="fa-solid fa-xmark"></i>
-                              </button>
-                              <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-                                  <h6 className="text-xl font-semibold text-blue-100">
-                                      Please Login to Continue
-                                  </h6>
-                              </div>
-
-                          </div>
-
-                         
-                          <div>
-                              <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-                                  <div className="mb-4">
-                                      <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
-                                          Email Address
-                                      </label>
-                                      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" placeholder="email"></input>
-                                  </div>
-                                  <div className="mb-6">
-                                      <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
-                                          Password
-                                      </label>
-                                      <input className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************"></input>
-                                      <p className="text-red-500 text-xs italic">Please Enter your password.</p>
-                                  </div>
-                                  <div className="flex items-center justify-between">
-                                      <button className="bg-blue-100  hover:bg-blue-700 w-full text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
-                                          Continue
-                                      </button>
-                                  </div>
-                              </form>
-                              <div className='text-xl text-center font-bold text-blue-100'>
-                                  <h1>OR</h1>
-                                  <div>
-                                      <div className="m-3">
-                                          <button className="border-4 w-full text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
-                                              <i className="fa-brands fa-google"></i>
-                                              -Continue
-                                          </button>
-                                      </div>
-                                  </div>
-                              </div>
-
-                          </div>
-
-                      </div>
+      {showModal ? (
+        <>
+          <div className="fixed -inset-x-6 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden outline-none focus:outline-none">
+            <div className="relative my-6 mx-auto w-auto max-w-3xl">
+              {/*content*/}
+              <div className="relative flex w-full flex-col rounded-lg border-0 bg-white px-6 shadow-lg outline-none focus:outline-none">
+                {/*header*/}
+                <div className="flex">
+                  <button
+                    className="float-right ml-auto  border-0 p-1  text-xl font-semibold leading-none text-black outline-none focus:outline-none"
+                    onClick={() => setShowModal(false)}
+                  >
+                    <i className="fa-solid fa-xmark"></i>
+                  </button>
+                  <div className="flex items-start justify-between rounded-t border-b border-solid border-slate-200 p-5">
+                    <h6 className="text-xl font-semibold text-blue-100">
+                      Please Login to Continue
+                    </h6>
                   </div>
-              </div><div className="opacity-25 fixed inset-0 z-40 bg-black"></div></>
-    ): ''}
-  </>
-  )
-}
+                </div>
+
+                <div>
+                  <form
+                    onSubmit={(e) => handleSubmit(e)}
+                    className="mb-4 rounded bg-white px-8 pt-6 pb-8 shadow-md"
+                  >
+                    <div className="mb-4">
+                      <label
+                        className="mb-2 block text-sm font-bold text-gray-700"
+                        htmlFor="email"
+                      >
+                        Email Address
+                      </label>
+                      <input
+                        className="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
+                        id="email"
+                        type="text"
+                        name="email"
+                        placeholder="email"
+                        onChange={(e) =>
+                          setValues({
+                            ...values,
+                            [e.target.name]: e.target.value,
+                          })
+                        }
+                      ></input>
+                    </div>
+                    <div className="mb-6">
+                      <label
+                        className="mb-2 block text-sm font-bold text-gray-700"
+                        htmlFor="password"
+                      >
+                        Password
+                      </label>
+                      <input
+                        className="focus:shadow-outline mb-3 w-full appearance-none rounded border border-red-500 py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
+                        id="password"
+                        type="password"
+                        name="password"
+                        placeholder="******************"
+                        onChange={(e) =>
+                          setValues({
+                            ...values,
+                            [e.target.name]: e.target.value,
+                          })
+                        }
+                      ></input>
+                      <p className="text-xs italic text-red-500">
+                        Please Enter your password.
+                      </p>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <button
+                        type="submit"
+                        className="focus:shadow-outline  w-full rounded bg-blue-100 py-2 px-4 font-bold text-white hover:bg-blue-700 focus:outline-none"
+                      >
+                        Login
+                      </button>
+                    </div>
+                  </form>
+                  <ToastContainer />
+                  <div className="text-center text-xl font-bold text-blue-100">
+                    <h1>OR</h1>
+                    <div>
+                      <div className="m-3">
+                        <button
+                          className="focus:shadow-outline w-full rounded border-4 py-2 px-4 font-bold text-black focus:outline-none"
+                          type="button"
+                        >
+                          <i className="fa-brands fa-google"></i>
+                          -Continue
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="fixed inset-0 z-40 bg-black opacity-25"></div>
+        </>
+      ) : null}
+    </>
+  );
+};
 
 export default Login;
