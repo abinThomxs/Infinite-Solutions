@@ -1,10 +1,10 @@
-import React, {  useState } from 'react'
+import React, {  useEffect, useState } from 'react'
 import { Bars3Icon, XMarkIcon} from "@heroicons/react/24/solid"
 import Logo from "@/assets/logo.png"
 import Link from './Link'
 import useMediaQuery from '@/hooks/useMediaQuery'
-import Login from '../login/Login'
-import Signup from '../signup/Signup'
+import Login from '../Login/Login'
+import Signup from '../Signup/Signup'
 
 type Props = {
   isTopOfPage: boolean;
@@ -19,6 +19,12 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
   const navbarBackground = isTopOfPage ? 'bg-transparent text-white' : 'bg-white text-blue-100 drop-shadow-xl'
   const [showLogin, setShowLogin] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
+  const token = localStorage.getItem('token');
+  const [ logout, setLogout ] = useState(false);
+  useEffect(() => {
+    
+  }, [localStorage.getItem('token')])
+  
 
     return (
     <><nav>
@@ -50,7 +56,9 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
                     <Link page="Reviews"
                       selectedPage={selectedPage}
                       setSelectedPage={setSelectedPage} />
-                    <button onClick={() => setShowLogin(!showLogin)}>login</button>
+                    {!token ? (<button onClick={() => setShowLogin(!showLogin)}>login</button>) : 
+                    (<button onClick={() => {localStorage.clear(); logout ? setLogout(false) : setLogout(true) }}>logout</button>)}                     
+                    
 
                     <button onClick={() => setShowSignup(!showSignup)}>Register</button>
 

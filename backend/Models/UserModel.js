@@ -15,6 +15,26 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Password is required'],
     },
+    userType:{
+        type: String,
+        default: 'user',
+    },
+    location:{
+        type: String,
+        default: 'Calicut'
+    },
+    serviceNo:{
+        type: Number,
+        default: 0,
+    },
+    phone:{
+        type: Number,
+        default: 0000000000,
+    },
+    isBlocked: {
+        type: Boolean,
+        default: false,
+    }
 });
 
 userSchema.pre('save', async function(next){

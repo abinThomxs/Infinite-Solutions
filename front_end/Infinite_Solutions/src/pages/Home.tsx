@@ -1,11 +1,11 @@
-import Footer from '@/scenes/footer/Footer'
+import Footer from '@/scenes/Footer/Footer'
 import Banner from '@/scenes/Home/banner/Banner'
 import Frequent from '@/scenes/Home/frequent/Frequent'
 import Info from '@/scenes/Home/info/Info'
 import Landing from '@/scenes/Home/landing'
 import Reviews from '@/scenes/Home/reviews/Reviews'
 import ServicesBox from '@/scenes/Home/services'
-import Navbar from '@/scenes/navbar'
+import Navbar from '@/scenes/Navbar'
 import React, { useEffect, useState } from 'react'
 
 type Props = {}

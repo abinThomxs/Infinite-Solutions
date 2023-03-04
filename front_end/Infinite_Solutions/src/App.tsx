@@ -3,21 +3,24 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-import Navbar from "@/scenes/navbar";
+import Navbar from "@/scenes/Navbar";
 import React, { useEffect, useState } from "react";
 import Home from "./pages/Home";
 import { useSelector } from "react-redux";
 import { objectType } from "@material-tailwind/react/types/components/checkbox";
-import { login, logout } from "./redux/LoginShowSlice";
+import { login, logout } from "./redux/loginSlice";
 import { useDispatch } from "react-redux";
 import 'react-toastify/dist/ReactToastify.css';
+import AdminHome from "./pages/admin/adminHome/AdminHome";
 
 
 function App() {
+  const token = localStorage.getItem('token');
   const [ selectedPage, setSelectedPage ] = useState("home");
   const [ isTopOfPage, setIsTopOfPage ] = useState<boolean>(true);
-  const showLogin = useSelector((state:objectType) => state.login.showLogin)
-  const dispatch = useDispatch()
+  // const Login = useSelector((state:objectType) => state.login.)
+  const dispatch = useDispatch();
+  
   
 
 useEffect(() => {
@@ -30,6 +33,8 @@ useEffect(() => {
       setIsTopOfPage(false);
     }
   }
+  token ? (dispatch(login)) :(dispatch(logout));
+  
   window.addEventListener('scroll', handleScroll);
   return () => window.removeEventListener('scroll', handleScroll);
 }, []);
@@ -39,6 +44,7 @@ useEffect(() => {
        <Router>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/admin" element={<AdminHome />} />
           
         </Routes>
       </Router>

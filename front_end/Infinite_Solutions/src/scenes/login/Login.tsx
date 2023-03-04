@@ -32,7 +32,10 @@ const Login = (props: Props) => {
           if (email) generateError(email);
           else if (password) generateError(password);
         } else {
-            alert("success");
+            localStorage.setItem('token', data.token);
+            setShowModal(false);
+            navigate('/')
+            window.location.reload();
         }
       }
     } catch (err) {

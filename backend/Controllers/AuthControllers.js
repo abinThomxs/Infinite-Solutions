@@ -46,16 +46,15 @@ module.exports.signup = async (req, res, next) => {
 module.exports.login = async (req, res, next) => {
    try{
     const { email, password } = req.body;
-    const user = await UserModel.login( email, password );
-    const token = createToken(user._id)
+    if(userType === 'user'){
+        const user = await UserModel.login( email, password,  );
+        const token = createToken(user._id)
+        console.log(token);
+        res.status(200).json({user: user._id, created: true, token});
+    } else {
 
-    res.cookie('jwt', token, {
-        withCredentials: true,
-        httpOnly: false,
-        maxAge: maxAge * 1000,
-    });
-    res.status(200).json({user: user._id, created: true});
-} catch (err) {
+    }
+   } catch (err) {
     console.log(err);
    }
 };
