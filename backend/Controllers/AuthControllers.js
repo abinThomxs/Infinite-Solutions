@@ -48,7 +48,6 @@ module.exports.login = async (req, res, next) => {
     const { email, password } = req.body;
         const user = await UserModel.login( email, password,  );
         const token = createToken(user._id)
-        console.log(token);
         res.status(200).json({user: user._id, created: true, token, userType: user.userType});
    } catch (err) {
     console.error(err);

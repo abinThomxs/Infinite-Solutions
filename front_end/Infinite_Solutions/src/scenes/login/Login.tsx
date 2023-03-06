@@ -32,12 +32,12 @@ const Login = (props: Props) => {
           if (email) generateError(email);
           else if (password) generateError(password);
         } else if (data.userType === 'user'){
-            localStorage.setItem('token', data.token);
+            localStorage.setItem('userToken', data.token);
             setShowModal(false);            
             navigate('/')
             window.location.reload();
             } else if (data.userType === 'admin') {
-              localStorage.setItem('token', data.token);
+              localStorage.setItem('adminToken', data.token);
               navigate('/admin');
               window.location.reload();
             }

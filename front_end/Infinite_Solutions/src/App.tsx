@@ -13,10 +13,12 @@ import { useDispatch } from "react-redux";
 import 'react-toastify/dist/ReactToastify.css';
 import AdminHome from "./pages/admin/adminHome/AdminHome";
 import path from "path";
+import Profile from "./pages/user/Profile";
 
 
 function App() {
-  const token = localStorage.getItem('token');
+  const userToken = localStorage.getItem('userToken');
+  const adminToken = localStorage.getItem('adminToken')
   const [ selectedPage, setSelectedPage ] = useState("home");
   const [ isTopOfPage, setIsTopOfPage ] = useState<boolean>(true);
   const Login = useSelector((state:objectType) => state.login)
@@ -34,7 +36,7 @@ useEffect(() => {
       setIsTopOfPage(false);
     }
   }
-  token ? (dispatch(login)) :(dispatch(logout));
+  userToken ? (dispatch(login)) :(dispatch(logout));
   
   window.addEventListener('scroll', handleScroll);
   return () => window.removeEventListener('scroll', handleScroll);
@@ -46,7 +48,8 @@ useEffect(() => {
        <Router>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/admin" element={ token ? <AdminHome/> : <Home/>}  />
+          <Route path="/admin" element={ adminToken ? <AdminHome/> : <Home/>}  />
+          <Route path="/profile" element={ userToken ? <Profile/> : <Home />}  />
           
         </Routes>
       </Router>

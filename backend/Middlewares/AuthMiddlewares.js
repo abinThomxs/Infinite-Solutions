@@ -4,7 +4,8 @@ import { verify } from 'jsonwebtoken';
 export function checkUser(req, res, next) {
     const token = req.cookies.jwt;
     if(token){
-        verify(token, 'infinitesolutions secret key', async (err, decodedToken) => {
+        jwt.verify(token, 'infinitesolutions secret key', async (err, decodedToken) => {
+            console.log(token);
             if(err){
                res.json({status: false});
                next(); 
