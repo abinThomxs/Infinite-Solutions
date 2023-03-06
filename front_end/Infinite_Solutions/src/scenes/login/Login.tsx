@@ -31,17 +31,22 @@ const Login = (props: Props) => {
           const { email, password } = data.errors;
           if (email) generateError(email);
           else if (password) generateError(password);
-        } else {
+        } else if (data.userType === 'user'){
             localStorage.setItem('token', data.token);
-            setShowModal(false);
+            setShowModal(false);            
             navigate('/')
             window.location.reload();
+            } else if (data.userType === 'admin') {
+              localStorage.setItem('token', data.token);
+              navigate('/admin');
+              window.location.reload();
+            }
+            
         }
+      } catch (err) {
+        console.log(err);
       }
-    } catch (err) {
-      console.log(err);
-    }
-  };
+    };
   return (
     <>
       {showModal ? (

@@ -17,7 +17,6 @@ const AdminUsers = (props: Props) => {
     useEffect(()=>{
       axios.get('http://localhost:4000/admin/users').then((response)=>{
         const userData = response.data;
-        console.log(response.data)
         setUsers(userData)
       })
     },[]);

@@ -5,9 +5,10 @@ import { RiSettings4Line } from "react-icons/ri";
 import { TbReportAnalytics } from "react-icons/tb";
 import { AiOutlineUser, AiOutlineHeart } from "react-icons/ai";
 import { FiMessageSquare, FiFolder, FiShoppingCart } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import AdminUsers from "./AdminUsers";
 import Dashboard from "./Dashboard";
+import Services from "./Services/Services";
 
 type Props = {};
 
@@ -24,8 +25,13 @@ const AdminSideBar = (props: Props) => {
     { name: "Carousal", component: "carousal", icon: AiOutlineHeart },
   ];
   const [open, setOpen] = useState(true);
-  const [component, setComponent] = useState("");
-
+  const [component, setComponent] = useState("dashboard");
+  const token = localStorage.getItem('token');
+  const [ logout, setLogout ] = useState(false);
+  useEffect(() => {
+    
+  }, [localStorage.getItem('token')])
+ 
   return (
     <div className="flex">
       <div
@@ -52,12 +58,16 @@ const AdminSideBar = (props: Props) => {
           ))}
         </div>
         <div className="mt-4">
-          Logout
+          {(<button onClick={() => {
+            localStorage.clear(); 
+            window.location.href="/"
+            }}>logout</button>)} 
         </div>
       </div>
       <div className="w-full mr-10 mt-5">
         {component === 'users' && <AdminUsers/>}
         {component === 'dashboard' && <Dashboard/>}
+        {component === 'services' && <Services/>}
       </div>
     </div>
   );
