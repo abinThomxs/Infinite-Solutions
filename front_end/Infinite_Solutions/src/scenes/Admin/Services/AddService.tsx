@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast, ToastContentProps } from "react-toastify";
+import TextField from '@mui/material/TextField';
 import axios from "axios";
 
 type Props = {};
@@ -42,9 +43,10 @@ const AddService = (props: Props) => {
     }catch (err) {
         console.error(err);
     }
+}
   return (
     <div>
-      {showModal ? (
+      {showModal && (
         
           <><div className="fixed -inset-x-6 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden outline-none focus:outline-none">
                   <div className="relative my-6 mx-auto w-auto max-w-3xl">
@@ -52,17 +54,18 @@ const AddService = (props: Props) => {
                       <div className="relative flex w-full flex-col rounded-lg border-0 bg-white px-6 shadow-lg outline-none focus:outline-none">
                           {/*header*/}
                           <div className="flex">
+                              
+                              <div className="flex items-start justify-between rounded-t border-b border-solid border-slate-200 p-5">
+                                  <h6 className="text-xl font-semibold text-blue-100">
+                                      Add New Service
+                                  </h6>
+                              </div>
                               <button
                                   className="float-right ml-auto  border-0 p-1  text-xl font-semibold leading-none text-black outline-none focus:outline-none"
                                   onClick={() => setShowModal(false)}
                               >
                                   <i className="fa-solid fa-xmark"></i>
                               </button>
-                              <div className="flex items-start justify-between rounded-t border-b border-solid border-slate-200 p-5">
-                                  <h6 className="text-xl font-semibold text-blue-100">
-                                      Add New Service
-                                  </h6>
-                              </div>
                           </div>
 
                           <div>
@@ -71,13 +74,13 @@ const AddService = (props: Props) => {
                                   className="mb-4 rounded bg-white px-8 pt-6 pb-8 shadow-md"
                               >
                                   <div className="mb-4">
-                                      <label
+                                      {/* <label
                                           className="mb-2 block text-sm font-bold text-gray-700"
                                           htmlFor="name"
                                       >
                                           Service Name
-                                      </label>
-                                      <input
+                                      </label> */}
+                                      {/* <input
                                           className="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
                                           id="email"
                                           type="text"
@@ -87,16 +90,16 @@ const AddService = (props: Props) => {
                                               ...values,
                                               [e.target.name]: e.target.value,
                                           })}
-                                      ></input>
+                                      ></input> */}
+                                      <TextField id="outlined-basic" label="Service Name" variant="outlined" name="name" 
+                                       onChange={(e) => setValues({
+                                        ...values,
+                                        [e.target.name]: e.target.value,
+                                    })}/>
                                   </div>
                                   <div className="mb-6">
-                                      <label
-                                          className="mb-2 block text-sm font-bold text-gray-700"
-                                          htmlFor="subName"
-                                      >
-                                          Service Level
-                                      </label>
-                                      <input
+                                      
+                                      {/* <input
                                           className="focus:shadow-outline mb-3 w-full appearance-none rounded border border-red-500 py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
                                           id="email"
                                           type="text"
@@ -106,7 +109,8 @@ const AddService = (props: Props) => {
                                               ...values,
                                               [e.target.name]: e.target.value,
                                           })}
-                                      ></input>
+                                      ></input> */}
+                                      
                                       <input
                                           className="focus:shadow-outline mb-3 w-full appearance-none rounded border border-red-500 py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
                                           id="email"
@@ -147,10 +151,10 @@ const AddService = (props: Props) => {
                   </div>
               </div><div className="fixed inset-0 z-40 bg-black opacity-25"></div></>
         
-      ) : ''}
+      ) }
     </div>
   );
 };
-};
+
 
 export default AddService;

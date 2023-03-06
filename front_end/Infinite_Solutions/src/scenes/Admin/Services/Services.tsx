@@ -37,7 +37,7 @@ const Services = (props: Props) => {
       </div>
 
       <div className='absolute inset-y-0 right-0 mt-0'>
-          {showAddService ? <AddService /> : ''}
+          {showAddService ? <AddService /> : ""}
         </div>
 
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
