@@ -33,6 +33,7 @@ const Login = (props: Props) => {
           else if (password) generateError(password);
         } else if (data.userType === 'user'){
             localStorage.setItem('userToken', data.token);
+            localStorage.setItem('userId', data.user);
             setShowModal(false);            
             navigate('/')
             window.location.reload();

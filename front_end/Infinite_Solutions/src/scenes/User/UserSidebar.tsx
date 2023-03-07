@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faAddressBook, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faTachographDigital } from '@fortawesome/free-solid-svg-icons';
+import { faBowlFood } from '@fortawesome/free-solid-svg-icons';
+import { faReceipt } from '@fortawesome/free-solid-svg-icons';
 import { MdOutlineDashboard } from 'react-icons/md';
 import { AiOutlineUser } from 'react-icons/ai';
 import { FiMessageSquare } from 'react-icons/fi';
@@ -13,6 +16,8 @@ interface sideBarProps {
     username: string;
     imageUrl: string;
   }
+
+ 
   
   const UserSidebar: React.FC<sideBarProps> = ({
     username,
@@ -38,7 +43,7 @@ interface sideBarProps {
             className="flex items-center py-2 px-4  hover:bg-gray-100 hover:text-gray-900"
             onClick={() => {setcomponents('dashboard')}}
           >
-            <FontAwesomeIcon icon={faUser} className="mr-2" />
+            <FontAwesomeIcon icon={faTachographDigital} className="mr-2" />
             {isAboveMediumScreens ? 'Dashboard' : ""}
             
           </a>
@@ -55,7 +60,7 @@ interface sideBarProps {
             className="flex items-center py-2 px-4  hover:bg-gray-100 hover:text-gray-900"
             onClick={() => {setcomponents('service')}}
           >
-            <FontAwesomeIcon icon={faUser} className="mr-2" />
+            <FontAwesomeIcon icon={faBowlFood} className="mr-2" />
             {isAboveMediumScreens ? 'Service History' : ""}
           </a>
           <a
@@ -63,7 +68,7 @@ interface sideBarProps {
             className="flex items-center py-2 px-4  hover:bg-gray-100 hover:text-gray-900"
             onClick={() => {setcomponents('reviews')}}
           >
-            <FontAwesomeIcon icon={faUser} className="mr-2" />
+            <FontAwesomeIcon icon={faReceipt} className="mr-2" />
             {isAboveMediumScreens ? 'Reviews' : ""}
           </a>
           <a
@@ -71,7 +76,7 @@ interface sideBarProps {
             className="flex items-center py-2 px-4  hover:bg-gray-100 hover:text-gray-900"
             onClick={() => {setcomponents('addAddress')}}
           >
-            <FontAwesomeIcon icon={faUser} className="mr-2" />
+            <FontAwesomeIcon icon={faAddressBook} className="mr-2" />
             {isAboveMediumScreens ? 'Add Address' : ""}
           </a>
           

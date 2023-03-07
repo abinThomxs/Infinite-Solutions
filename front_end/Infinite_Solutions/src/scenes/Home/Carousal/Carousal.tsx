@@ -26,7 +26,7 @@ const CarouselBackground = () => {
         <div className="h-screen bg-[url('/assets/pet_care.png')] bg-cover bg-center " />
         <div className="h-screen bg-[url('/assets/plumber.jpg')] bg-cover bg-center " />
       </Slider>
-      <div className="absolute top-0 left-0 h-full w-full bg-black opacity-40" />
+      <div className="absolute top-0 left-0 h-full w-full bg-black opacity-60" />
       <div>
         <div className="absolute top-0 left-0 flex h-full w-full items-center justify-center gap-16">
           <div className="absolute top-0 left-0 flex h-80 w-full items-center justify-center">

@@ -1,19 +1,35 @@
 import Navbar from "@/scenes/Navbar";
 import UserSidebar from "@/scenes/User/UserSidebar";
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 type Props = {};
 
-const Profile: React.FC = () => {
+interface User {
+  name: string;
+  imageUrl: string;
+}
+
+const Profile = (props: Props) => {
+  const [user, setuser] = useState<User>();
+
+  useEffect(()=>{
+    const userId = localStorage.getItem('userId');
+    axios.post('http://localhost:4000/profile', {userId}).then((response)=>{
+      const userData = response.data;
+      setuser(userData)
+    })
+  },[]);
   return (
     <>
-      <Navbar isTopOfPage={false}/>
-      <div className="mt-32 flex">
-        <UserSidebar
-          username="John wick"
-          imageUrl="./assets/john.webp"
-        />
-      </div>
+    {user &&
+      <><Navbar isTopOfPage={false} /><div className="mt-32 flex">
+          <UserSidebar
+            username={user.name}
+            imageUrl="./assets/john.webp"
+             />
+        </div></>
+      }
     </>
   );
 };

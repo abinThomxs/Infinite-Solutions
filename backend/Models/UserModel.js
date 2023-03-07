@@ -27,6 +27,10 @@ const userSchema = new mongoose.Schema({
         type: Number,
         default: 0,
     },
+    reviewNo:{
+        type: Number,
+        default: 0,
+    },
     phone:{
         type: Number,
         default: 0000000000,
