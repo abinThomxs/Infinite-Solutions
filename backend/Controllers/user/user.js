@@ -15,9 +15,14 @@ module.exports = {
 
     postEditProfile:  (req, res) => {
         const userData = req.body;
-        User.updateOne({_id: userData.user._id}, userData.user).then((data) => {
-            console.log(data)
+        try{
+            User.updateOne({_id: userData.user._id}, userData.user).then((data) => {
+                res.json(data);
         })
+        
+        } catch(err) {
+            console.log(err);
+        }
     }
 
 } 

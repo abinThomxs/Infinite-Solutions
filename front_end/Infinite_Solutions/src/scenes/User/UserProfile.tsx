@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 type Props = {}
 
@@ -15,6 +16,7 @@ interface User {
 
 const UserProfile = (props: Props) => {
   const [user,setUser] = useState<User>();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const userId = localStorage.getItem("userId");
@@ -24,11 +26,14 @@ const UserProfile = (props: Props) => {
     });
   }, []);
 
+
+
   return (
     
     <>
     {user && 
-      <><div className="md:flex w-full justify-center border-2 py-6 text-white bg-gradient-to-r from-blue-100 to-slate-900 shadow-xl">
+      <div >
+        <div className="md:flex w-full justify-center border-2 py-6 text-white bg-gradient-to-r from-blue-100 to-slate-900 shadow-xl">
         <div className="flex flex-col items-center border-b md:p-4">
           <img
             className="h-40 w-40  object-cover"
@@ -63,16 +68,15 @@ const UserProfile = (props: Props) => {
         </div>
       </div><div className="w-full flex justify-center">
           <div className=" mt-6">
-            <a
-              href="#"
-              className="flex items-center py-2 px-4  hover:bg-green-200 hover:text-blue-900"
+            <Link              
+              className="flex items-center text-xl py-2 px-4  text-white bg-gradient-to-r from-blue-100 to-slate-900 hover:rounded-2xl "
+              to={(`/consultantRegister/${user.name}`)}              
             >
-
               Register as a Consultant
-            </a>
+            </Link>
           </div>
 
-        </div></>
+        </div></div>
 }
     </>
   );

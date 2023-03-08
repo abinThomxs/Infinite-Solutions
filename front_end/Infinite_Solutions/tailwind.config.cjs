@@ -9,6 +9,10 @@ module.exports = {
         "blue-60": "#1DA1F2",
         "purple-80": "#7B1FA2"
       },
+      backgroundImage: {
+        'bgAbstract': "url('/public/assets/bgAbstract.jpg')",
+        'footer-texture': "url('/img/footer-texture.png')",
+      },
       fontFamily: {
         dmsans: ["DM Sans", "sans-serif"],
         montserrat: ["Montserrat", "sans-serif"]

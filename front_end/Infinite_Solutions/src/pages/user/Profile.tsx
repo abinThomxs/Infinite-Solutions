@@ -31,9 +31,8 @@ const Profile = (props: Props) => {
     {user &&
       <><Navbar isTopOfPage={false} /><div className="mt-32 flex">
           <UserSidebar
-            username={user.name}
-            imageUrl="./assets/john.webp"
-             />
+          name={user.name}
+          imageUrl="./assets/john.webp" _id={""} email={""} serviceNo={0} reviewNo={0} location={""} isBlocked={false}             />
         </div></>
       }
     </>

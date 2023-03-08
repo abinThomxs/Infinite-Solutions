@@ -11,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import AdminHome from "./pages/admin/adminHome/AdminHome";
 import path from "path";
 import Profile from "./pages/user/Profile";
+import ConsultantRegister from './pages/user/ConsultantRegister'
 
 
 function App() {
@@ -43,6 +44,7 @@ useEffect(() => {
           <Route path="/" element={<Home />} />
           <Route path="/admin" element={ adminToken ? <AdminHome/> : <Home/>}  />
           <Route path="/profile" element={ userToken ? <Profile/> : <Home />}  />
+          <Route path="/consultantRegister/:name" element={ userToken ? <ConsultantRegister/> : <Home />}  />
           
         </Routes>
       </Router>
