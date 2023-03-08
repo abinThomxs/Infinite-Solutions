@@ -9,6 +9,7 @@ router.post('/');
 router.post('/signup', signup);
 router.post('/login',  login);
 router.post('/profile', userController.postUserData);
+router.post('/editProfile', userController.postEditProfile);
 
 
 module.exports = router;

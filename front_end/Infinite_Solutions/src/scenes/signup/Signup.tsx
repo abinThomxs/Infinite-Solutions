@@ -24,7 +24,7 @@ const Signup = (props: Props) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post("http://localhost:4000/signup", {
+      const { data } = await axios.post("h  /signup", {
         ...values,
       });
       if (data) {

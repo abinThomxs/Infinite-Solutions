@@ -6,9 +6,15 @@ import React, { useEffect, useState } from "react";
 type Props = {};
 
 interface User {
+  _id: string;
   name: string;
-  imageUrl: string;
+  email: string;
+  serviceNo: number;
+  reviewNo: number;
+  location: string;
+  isBlocked: boolean;
 }
+
 
 const Profile = (props: Props) => {
   const [user, setuser] = useState<User>();

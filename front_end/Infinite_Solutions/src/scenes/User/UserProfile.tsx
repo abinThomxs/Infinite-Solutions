@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-type Props = {};
+type Props = {}
 
 interface User {
   _id: string;
@@ -16,18 +16,19 @@ interface User {
 const UserProfile = (props: Props) => {
   const [user,setUser] = useState<User>();
 
-    useEffect(()=>{
-      const userId = localStorage.getItem('userId');
-      axios.post('http://localhost:4000/profile', {userId}).then((response)=>{
-        const userData = response.data;
-        setUser(userData)
-      })
-    },[]);
+  useEffect(() => {
+    const userId = localStorage.getItem("userId");
+    axios.post("http://localhost:4000/profile", { userId }).then((response) => {
+      const userData = response.data;
+      setUser(userData);
+    });
+  }, []);
+
   return (
     
     <>
     {user && 
-      <><div className="md:flex w-full justify-center border-2 py-6 shadow-xl">
+      <><div className="md:flex w-full justify-center border-2 py-6 text-white bg-gradient-to-r from-blue-100 to-slate-900 shadow-xl">
         <div className="flex flex-col items-center border-b md:p-4">
           <img
             className="h-40 w-40  object-cover"
@@ -39,12 +40,13 @@ const UserProfile = (props: Props) => {
           >
             Change Picture
           </a>
-          <h2 className="mt-2 mb-1 font-medium text-blue-100">{user.name}</h2>
+          <h2 className="mt-2 mb-1 font-medium text-white">{user.name}</h2>
         </div>
-        <div className="flex ">
+        <div className="flex justify-center ">
 
           <div className="md:mx-8">
             <h4 className="md:my-6">Name</h4>
+            <h4 className="md:my-6">Email</h4>
             <h4 className="md:my-6">Location</h4>
             <h4 className="md:my-6">No of Services</h4>
             <h4 className="md:my-6">No of Reviews</h4>
@@ -52,6 +54,7 @@ const UserProfile = (props: Props) => {
 
           <div className="">
             <h4 className="md:my-6">{user.name}</h4>
+            <h4 className="md:my-6">{user.email}</h4>
             <h4 className="md:my-6">{user.location}</h4>
             <h4 className="md:my-6">{user.serviceNo}</h4>
             <h4 className="md:my-6">{user.reviewNo}</h4>

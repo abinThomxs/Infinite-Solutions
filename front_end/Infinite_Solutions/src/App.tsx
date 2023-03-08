@@ -6,10 +6,7 @@ import {
 import Navbar from "@/scenes/Navbar";
 import React, { useEffect, useState } from "react";
 import Home from "./pages/Home";
-import { useSelector } from "react-redux";
 import { objectType } from "@material-tailwind/react/types/components/checkbox";
-import { login, logout } from "./redux/loginSlice";
-import { useDispatch } from "react-redux";
 import 'react-toastify/dist/ReactToastify.css';
 import AdminHome from "./pages/admin/adminHome/AdminHome";
 import path from "path";
@@ -21,10 +18,6 @@ function App() {
   const adminToken = localStorage.getItem('adminToken')
   const [ selectedPage, setSelectedPage ] = useState("home");
   const [ isTopOfPage, setIsTopOfPage ] = useState<boolean>(true);
-  const Login = useSelector((state:objectType) => state.login)
-  const dispatch = useDispatch();
-  
-  
 
 useEffect(() => {
   const handleScroll = () => {
@@ -36,7 +29,7 @@ useEffect(() => {
       setIsTopOfPage(false);
     }
   }
-  userToken ? (dispatch(login)) :(dispatch(logout));
+
   
   window.addEventListener('scroll', handleScroll);
   return () => window.removeEventListener('scroll', handleScroll);
