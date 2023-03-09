@@ -9,6 +9,7 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import AdminUsers from "./AdminUsers";
 import Dashboard from "./Dashboard";
 import Services from "./Services/Services";
+import Consultants from "./Consultants";
 
 type Props = {};
 
@@ -30,7 +31,7 @@ const AdminSideBar = (props: Props) => {
   const [ logout, setLogout ] = useState(false);
   useEffect(() => {
     
-  }, [localStorage.getItem('token')])
+  }, [localStorage.getItem('adminToken')])
  
   return (
     <div className="flex">
@@ -59,7 +60,7 @@ const AdminSideBar = (props: Props) => {
         </div>
         <div className="mt-4">
           {(<button onClick={() => {
-            localStorage.clear(); 
+            localStorage.removeItem('adminToken'); 
             window.location.href="/"
             }}>logout</button>)} 
         </div>
@@ -68,6 +69,7 @@ const AdminSideBar = (props: Props) => {
         {component === 'users' && <AdminUsers/>}
         {component === 'dashboard' && <Dashboard/>}
         {component === 'services' && <Services/>}
+        {component === 'consultants' && <Consultants/>}
       </div>
     </div>
   );

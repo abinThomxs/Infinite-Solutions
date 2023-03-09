@@ -6,24 +6,26 @@ type Props = {};
 
 interface Service {
   _id: string;
-  name: string;
+  serviceName: string;
   subName: string;
   description: string;
   image: string;
   rate: number;
-  isBlocked: boolean;
+  active: boolean;
 }
 
 const Services = (props: Props) => {
     const [services,setServics] = useState<Service[]>([]);
     const [showAddService, setshowAddService] = useState(false)
 
-    // useEffect(()=>{
-    //   axios.get('http://localhost:4000/admin/services').then((response)=>{
-    //     const serviceData = response.data;
-    //     setServics(serviceData)
-    //   })
-    // },[]);
+    useEffect(()=>{      
+      axios.get('http://localhost:4000/admin/services').then((response)=>{
+        const serviceData = response.data.serviceData;        
+        setServics(serviceData)
+      })
+    },[services]);
+
+    
 
   return (
     <div className="px-10">
@@ -67,7 +69,7 @@ const Services = (props: Props) => {
           <tbody>
             {services.map((service, i) => (
               <tr className="bg-grey border-b text-blue-100  dark:border-gray-700">
-                <td className="whitespace-nowrap px-6 py-4">{service.name}</td>
+                <td className="whitespace-nowrap px-6 py-4">{service.serviceName}</td>
                 <td className="whitespace-nowrap px-6 py-4">{service.subName}</td>
                 <td className="whitespace-nowrap px-6 py-4">
                   {service.description}
@@ -75,13 +77,13 @@ const Services = (props: Props) => {
                 <td className="whitespace-nowrap px-6 py-4">{service.rate}</td>
                 <td className="whitespace-nowrap px-6 py-4">{service.image}</td>
                 <td className="whitespace-nowrap px-6 py-4">
-                  {!service.isBlocked ? (
+                  {service.active ? (
                     <button className="rounded bg-red-700 px-4 font-bold text-white hover:bg-red-900">
-                      Block
+                      de-activate
                     </button>
                   ) : (
                     <button className="rounded bg-green-500 py-2 px-4 font-bold text-white hover:bg-green-700">
-                      UnBlock
+                      activate
                     </button>
                   )}
                   {/* onClick={()=>userController(user._id)} */}

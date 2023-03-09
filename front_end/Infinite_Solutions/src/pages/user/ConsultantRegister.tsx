@@ -11,19 +11,22 @@ const ConsultantRegister = (props: Props) => {
   return (
     <div className=" h-screen bg-cover">
       <Navbar isTopOfPage={false}></Navbar>
-      <div className="flex  justify-around pt-40   text-blue-100 ">
-        <div className="w-4/12">
+      <div className="md:flex  md:justify-around pt-40   text-blue-100 ">
+        <div className="md:w-4/12">
           <img src="/assets/joinourteam.jpg" alt="" />
           <div className="mt-6 text-center ">
             <Link
-              className="bg-blue-100 rounded-md py-2 px-4 text-xl text-white hover:bg-black "
+              className="bg-blue-100 rounded-md py-2 mx-4 px-4 text-xl text-white hover:bg-black "
               to={"/"}
             >
               Go Home
             </Link>
+            <button className="bg-blue-100 rounded-md mx-4 py-2 px-4 text-xl text-white hover:bg-black ">
+              Join our Team
+            </button>
           </div>
         </div>
-        <div className=" w-5/12 p-8 text-2xl shadow-2xl">
+        <div className=" md:w-5/12 p-8 text-2xl shadow-2xl">
           <p className="mb-6">
             Dear <strong>{name}</strong>, We are really happy to see that you
             have shown interest in applying to work as a consultant for our

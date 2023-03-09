@@ -33,7 +33,7 @@ const handleErrors = (err) => {
 module.exports.signup = async (req, res, next) => {
     try{
         const { email, password, name, confirmPassword } = req.body;
-            const user = await UserModel.create({ email, password, name });-            
+            const user = await UserModel.create({ email, password, name });          
             res.status(201).json({user: user._id, created: true});                
         } catch (err) {
             console.log(err);
@@ -48,7 +48,7 @@ module.exports.login = async (req, res, next) => {
     const { email, password } = req.body;
         const user = await UserModel.login( email, password,  );
         const token = createToken(user._id)
-        res.status(200).json({user: user._id, created: true, token, userType: user.userType});
+        res.status(200).json({user: user._id, created: true, token, userType: user.userType, isBlocked: user.isBlocked});
    } catch (err) {
     console.error(err);
    }

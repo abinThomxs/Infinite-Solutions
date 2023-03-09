@@ -12,6 +12,7 @@ import UserProfile from "./UserProfile";
 import EditProfile from "./EditProfile";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import axios from "axios";
+import Consultants from "../Admin/Consultants";
 
 interface User {
   _id: string;

@@ -9,6 +9,7 @@ type Props = {};
 const Login = (props: Props) => {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(true);
+  const [blockMessage, setblockMessage] = useState(false)
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -19,19 +20,24 @@ const Login = (props: Props) => {
       position: "bottom-right",
     });
 
+  let message;
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
+      
       const { data } = await axios.post("http://localhost:4000/login", {
         ...values,
       });
 
       if (data) {
+        console.log(data)
         if (data.errors) {
           const { email, password } = data.errors;
           if (email) generateError(email);
           else if (password) generateError(password);
-        } else if (data.userType === 'user'){
+          
+        } else if (data.userType === 'user' && data.isBlocked === false){
+          message = '';
             localStorage.setItem('userToken', data.token);
             localStorage.setItem('userId', data.user);
             setShowModal(false);            
@@ -41,7 +47,9 @@ const Login = (props: Props) => {
               localStorage.setItem('adminToken', data.token);
               navigate('/admin');
               window.location.reload();
-            }
+            } else if (data.isBlocked === true){
+              setblockMessage(!blockMessage);
+           }
             
         }
       } catch (err) {
@@ -65,9 +73,14 @@ const Login = (props: Props) => {
                     <i className="fa-solid fa-xmark"></i>
                   </button>
                   <div className="flex items-start justify-between rounded-t border-b border-solid border-slate-200 p-5">
+                    {!blockMessage ? 
                     <h6 className="text-xl font-semibold text-blue-100">
-                      Please Login to Continue
-                    </h6>
+                    Please Login to Continue
+                    </h6> : 
+                    <h6 className="text-xl font-semibold text-red-500">
+                    You are Blocked
+                    </h6> }
+
                   </div>
                 </div>
 
@@ -105,7 +118,7 @@ const Login = (props: Props) => {
                         Password
                       </label>
                       <input
-                        className="focus:shadow-outline mb-3 w-full appearance-none rounded border border-red-500 py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
+                        className="focus:shadow-outline mb-3 w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
                         id="password"
                         type="password"
                         name="password"
@@ -117,9 +130,7 @@ const Login = (props: Props) => {
                           })
                         }
                       ></input>
-                      <p className="text-xs italic text-red-500">
-                        Please Enter your password.
-                      </p>
+                      
                     </div>
                     <div className="flex items-center justify-between">
                       <button

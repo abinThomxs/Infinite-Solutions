@@ -44,8 +44,7 @@ useEffect(() => {
           <Route path="/" element={<Home />} />
           <Route path="/admin" element={ adminToken ? <AdminHome/> : <Home/>}  />
           <Route path="/profile" element={ userToken ? <Profile/> : <Home />}  />
-          <Route path="/consultantRegister/:name" element={ userToken ? <ConsultantRegister/> : <Home />}  />
-          
+          <Route path="/consultantRegister/:name" element={ userToken ? <ConsultantRegister/> : <Home />}  />          
         </Routes>
       </Router>
     </div>

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const serviceSchema = new mongoose.Schema({
-    name:{
+    serviceName:{
         type: String,
         required: [true, 'Name is required'],
     },
@@ -15,7 +15,6 @@ const serviceSchema = new mongoose.Schema({
     },
     image:{
         type: String,
-        required: [true, 'Image is required'],
     },
     rate:{
         type: Number,
@@ -24,9 +23,9 @@ const serviceSchema = new mongoose.Schema({
     consultants:{
         type: Array,
     },
-    isBlocked: {
+    active: {
         type: Boolean,
-        default: false,
+        default: true,
     }
 });
 

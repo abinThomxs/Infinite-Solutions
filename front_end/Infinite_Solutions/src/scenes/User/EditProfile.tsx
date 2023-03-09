@@ -20,7 +20,7 @@ interface User {
   newPassword: string;
   confirmPassword: string;
 }
-
+  
 const EditProfile = (props: Props) => {
   const [user, setUser] = useState<User>();
   const [errorAlert, seterrorAlert] = useState(false);

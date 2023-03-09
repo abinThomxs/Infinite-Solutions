@@ -53,7 +53,8 @@ const Navbar = ({ isTopOfPage}: Props) => {
                       ) : (
                         <button
                           onClick={() => {
-                            localStorage.clear();
+                            localStorage.removeItem('userToken');
+                            localStorage.removeItem('userId');
                             logout ? setLogout(false) : setLogout(true);
                           }}
                         >

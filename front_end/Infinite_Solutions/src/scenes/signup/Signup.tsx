@@ -24,7 +24,7 @@ const Signup = (props: Props) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post("h  /signup", {
+      const { data } = await axios.post("http://localhost:4000/signup", {
         ...values,
       });
       if (data) {
@@ -33,7 +33,7 @@ const Signup = (props: Props) => {
           if (email) generateError(email);
           else if (password) generateError(password);
         } else {
-          alert("success");
+          setShowModal(!showModal);
         }
       }
     } catch (err) {
@@ -118,7 +118,7 @@ const Signup = (props: Props) => {
                         Password
                       </label>
                       <input
-                        className="focus:shadow-outline mb-3 w-full appearance-none rounded border border-red-500 py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
+                        className="focus:shadow-outline mb-3 w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
                         id="password"
                         name="password"
                         type="password"
@@ -139,7 +139,7 @@ const Signup = (props: Props) => {
                         Confirm Password
                       </label>
                       <input
-                        className="focus:shadow-outline mb-3 w-full appearance-none rounded border border-red-500 py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
+                        className="focus:shadow-outline mb-3 w-full appearance-none rounded border  py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
                         id="password"
                         name="confirmPassword"
                         type="password"
